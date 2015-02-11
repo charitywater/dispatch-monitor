@@ -1,10 +1,5 @@
 # charity: water – Remote Monitoring
 
-[![Semaphore][semaphore_badge]][semaphore]
-
-[semaphore_badge]: https://semaphoreapp.com/api/v1/projects/c8c68c13-9383-457d-b1a6-63f2e6a78b1a/178496/shields_badge.png
-[semaphore]: https://semaphoreapp.com/sbedi24/remote_monitoring
-
 ## Development Setup
 
 ### Requirements

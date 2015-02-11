@@ -8,5 +8,11 @@ class Sensor < ActiveRecord::Base
     uniqueness: true,
     presence: true
 
-  delegate :deployment_code, :community_name, to: :project
+  def deployment_code
+    self.project.nil? ? nil : self.project.deployment_code
+  end
+
+  def community_name
+    self.project.nil? ? nil : self.project.community_name
+  end
 end

@@ -21,7 +21,7 @@
         - sensors.items.each do |sensor|
           %tr
             %td= sensor.imei
-            %td= link_to sensor.deployment_code, map_project_path(sensor.project)
+            %td= link_to sensor.deployment_code, map_project_path(sensor.project) unless sensor.deployment_code.nil?
             %td= sensor.community_name
             %td= sensor.uptime
             %td= number_with_delimiter sensor.daily_average

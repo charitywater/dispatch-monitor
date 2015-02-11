@@ -1,0 +1,14 @@
+@mixin animation($params) {
+  -webkit-animation: $params;
+  animation: $params;
+}
+
+@mixin animation-delay($delay) {
+  -webkit-animation-delay: $delay;
+  animation-delay: $delay;
+}
+
+@mixin animation-fill-mode($mode) {
+  -webkit-animation-fill-mode: $mode;
+  animation-fill-mode: $mode;
+}

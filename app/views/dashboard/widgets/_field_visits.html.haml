@@ -1,0 +1,34 @@
+.medium-4.columns.end
+  %section.dashboard-widget{ data: { behavior: 'configurableDashboardItem' } }
+    %header.dashboard-widget-header
+      %h2.dashboard-widget-header-title
+        %span.dashboard-widget-header-value= dashboard.total_survey_response_count
+        = 'Field visit'.pluralize(dashboard.total_survey_response_count)
+
+    %section.dashboard-widget-content
+      .dashboard-field-visits.observation
+        %span.dashboard-field-visits-value.right= dashboard.source_observation_survey_response_count
+        %span.dashboard-field-visits-label Observation
+
+      .dashboard-field-visits.maintenance
+        %span.dashboard-field-visits-value.right= dashboard.maintenance_report_survey_response_count
+        %span.dashboard-field-visits-label Maintenance
+
+    %footer.dashboard-widget-footer.dashboard-widget-footer-no-padding
+      .full-height.vertical-container
+        .full-width.vertically-centered
+          .hide{ data: { 'dashboard-edit' => true } }
+            = f.submit 'Save', data: { 'dashboard-edit-button' => true }, class: 'button radius tiny right'
+            filter last
+            = f.input :days,
+              as: :integer,
+              input_html: { class: 'dashboard-field-visits-input', min: 1, step: 1, data: { 'dashboard-edit-input' => true } },
+              label_html: { class: 'hide-accessibly' },
+              wrapper_html: { class: 'dashboard-days' }
+            = 'day'.pluralize(dashboard.filter_form.days)
+          %div{ data: { 'dashboard-edit' => true } }
+            = link_to '#', data: { 'dashboard-edit-button' => true }, class: 'dashboard-widget-footer-icon right' do
+              %span.ss-icon.ss-symbolicons-block Settings
+            filter last
+            %span.dashboard-widget-value= dashboard.filter_form.days
+            = 'day'.pluralize(dashboard.filter_form.days)

@@ -1,0 +1,66 @@
+#ticket.page-content.row
+  .small-12.columns
+    .row
+      .small-12.columns
+        .breadcrumb-link
+          = link_to projects_path do
+            %span.ss-icon.ss-navigateleft.ss-standard
+            Project Dashboard
+
+    .row
+      .small-12.columns
+        %header.detailed-info-header.vertical-container{ class: @ticket.project.status }
+          %h1.detailed-info-header-title New Ticket for #{@ticket.community_name}
+          %h2.detailed-info-header-subtitle= @ticket.country
+          .detailed-info-header-icon.vertically-centered
+
+    = simple_form_for @ticket.ticket, url: project_tickets_path do |f|
+      .row
+        .small-12.columns
+          %section.detailed-info-body{ role: 'main' }
+            %section.detailed-info-body-section
+
+              .detailed-info-body-section-content
+                .row.detailed-info-item
+                  .medium-6.columns.detailed-info-item-label
+                    = f.label :started_at, class: 'inline', required: true
+                  .medium-6.columns.detailed-info-item-value
+                    = f.input :started_at, as: :date, required: true, label: false,
+                      start_year: Time.zone.now.year,
+                      end_year: Time.zone.now.year + 2
+
+              .detailed-info-body-section-content
+                .row.detailed-info-item
+                  .medium-6.columns.detailed-info-item-label
+                    = f.label :due_at, class: 'inline', required: false
+                  .medium-6.columns.detailed-info-item-value
+                    = f.input :due_at, as: :date, required: false, label: false,
+                      include_blank: true,
+                      start_year: Time.zone.now.year,
+                      end_year: Time.zone.now.year + 2
+
+              .detailed-info-body-section-content
+                .row.detailed-info-item
+                  .medium-6.columns.detailed-info-item-label
+                    = f.label :project_status, class: 'inline', required: true
+                  .medium-6.columns.detailed-info-item-value
+                    = f.input :project_status,
+                      as: :select,
+                      collection: enum_to_select_options_array(Project.statuses.slice('needs_maintenance', 'needs_visit')),
+                      required: true,
+                      label: false,
+                      input_html: { rows: 4 }
+
+              .detailed-info-body-section-content
+                .row.detailed-info-item
+                  .medium-6.columns.detailed-info-item-label
+                    = f.label :notes, class: 'inline', required: false
+                  .medium-6.columns.detailed-info-item-value
+                    = f.input :notes, required: false, label: false,
+                      input_html: { rows: 4 }
+
+      .row
+        .small-12.columns
+          %footer.detailed-info-footer
+            = f.submit 'Create Ticket', class: 'button radius'
+            = link_to 'Cancel', projects_path, class: 'button radius secondary'

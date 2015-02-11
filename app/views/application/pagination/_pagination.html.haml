@@ -1,0 +1,6 @@
+= paginate items,
+  remote: true,
+  param_name: "#{filter_form.param_name}[page]",
+  params: filter_form.to_query_params_for_pagination,
+  window: 2
+%br

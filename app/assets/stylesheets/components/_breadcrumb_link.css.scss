@@ -1,0 +1,19 @@
+.breadcrumb-link {
+  margin-bottom: 1.5rem;
+
+  a  {
+    color: $cw-gray-30;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+
+    &:hover {
+      color: $cw-gray-30-hover;
+    }
+  }
+
+  .ss-icon {
+    font-size: 0.7rem;
+  }
+}

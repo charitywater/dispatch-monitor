@@ -1,0 +1,22 @@
+%tr
+  %td= link_to project.deployment_code, map_project_path(project)
+  %td= project.status_tag
+  %td= project.country
+  %td= project.region
+  %td= project.district
+  %td= project.community_name
+  %td= project.site_name
+  %td
+    - if project.allows_new_ticket? && !current_account.viewer?
+      = link_to new_project_ticket_path(project), title: 'Create Ticket' do
+        %span.ss-icon.ss-standard.ss-addcalendar
+        %span.hide-accessibly Create Ticket
+    - if policy(project).update?
+      = link_to edit_project_path(project), title: 'Edit Project' do
+        %span.ss-icon.ss-standard Edit
+    - if policy(project).destroy?
+      = link_to project_path(project),
+        title: 'Delete Project',
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete project #{project.community_name} (#{project.deployment_code})?" } do
+        %span.ss-icon.ss-standard Delete

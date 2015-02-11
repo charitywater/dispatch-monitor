@@ -1,0 +1,27 @@
+$cw-white: #ffffff;
+$cw-green: #4bab70;
+$cw-red: #f0595c;
+$cw-dark-red: darken($cw-red, 30%);
+$cw-blue: #399ff4;
+$cw-yellow: #eacd55;
+$cw-orange: #fba149;
+
+$cw-white-hover: darken($cw-white, 20%);
+$cw-red-hover: darken($cw-red, 20%);
+$cw-dark-red-hover: darken($cw-dark-red, 20%);
+$cw-green-hover: darken($cw-green, 20%);
+$cw-blue-hover: darken($cw-blue, 20%);
+$cw-yellow-hover: darken($cw-yellow, 20%);
+$cw-orange-hover: darken($cw-orange, 20%);
+
+$cw-gray-10: #333232;
+$cw-gray-20: #6e6e6e;
+$cw-gray-30: #a5a59f;
+$cw-gray-40: #eeeeee;
+$cw-gray-50: #f8f8f8;
+
+$cw-gray-10-hover: darken($cw-gray-10, 20%);
+$cw-gray-20-hover: darken($cw-gray-20, 20%);
+$cw-gray-30-hover: darken($cw-gray-30, 20%);
+$cw-gray-40-hover: darken($cw-gray-40, 20%);
+$cw-gray-50-hover: darken($cw-gray-50, 20%);

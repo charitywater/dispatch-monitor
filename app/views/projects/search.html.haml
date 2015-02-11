@@ -1,0 +1,11 @@
+.page-content
+  %header.row.vertical-container
+    %h1.medium-8.columns
+      Search Results
+  %section.row
+    = form_tag projects_search_path, :method => "get" do
+      %span.medium-5.columns
+        = text_field_tag :deployment_code, params[:deployment_code]
+      = submit_tag 'Search', class: 'button radius small'
+  %section.row#projects{ data: { behavior: 'rewire' }, role: 'main' }
+    = render 'search_projects', projects: @projects

@@ -1,0 +1,19 @@
+- filter_form = dashboard.filter_form
+= simple_form_for filter_form, url: root_path, method: :get, as: filter_form.param_name, remote: true do |f|
+  %header.row
+    %h1.medium-3.columns Dashboard
+    - if policy(filter_form).filter_by_program?
+      .medium-5.columns.end
+        = f.input :program_id,
+          as: :select,
+          collection: Program.with_partner_and_country,
+          include_blank: '[All Programs]',
+          label_html: { class: 'hide-accessibly' },
+          input_html: { data: { behavior: 'autoSubmit' } }
+
+  %section.row
+    = render 'dashboard/widgets/map', dashboard: dashboard
+    = render 'dashboard/widgets/overview', dashboard: dashboard
+  %section.row
+    = render 'dashboard/widgets/tickets', dashboard: dashboard
+    = render 'dashboard/widgets/field_visits', dashboard: dashboard, f: f

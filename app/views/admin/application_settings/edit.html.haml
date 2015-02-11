@@ -1,0 +1,11 @@
+.page-content{ role: 'main' }
+  %header.row
+    %h1.medium-12.columns DISPATCH Options
+
+  %section.row
+    = simple_form_for @application_settings, url: admin_application_settings_path do |f|
+      .medium-12.columns
+        = f.input :sensors_affect_project_status,
+          input_html: { autocomplete: :off }
+      .medium-12.columns
+        = f.submit 'Save DISPATCH Options', class: 'button radius'

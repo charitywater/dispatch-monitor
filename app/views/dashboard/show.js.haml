@@ -1,0 +1,2 @@
+$('#dashboard').html('#{j render('dashboard', dashboard: @dashboard)}');
+if (Modernizr.history) { history.pushState({}, '', '#{root_path(@dashboard.filter_form.to_query_params).html_safe}'); }

@@ -1,0 +1,7 @@
+Dear #{recipient.name},
+
+= precede "\n" do
+  During the Maintenance Report import:
+
+- results.each do |result|
+  = render 'result', result

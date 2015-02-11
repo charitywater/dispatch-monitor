@@ -1,0 +1,12 @@
+%div{ class: @navbar_class || 'contain-to-grid' }
+  %nav.top-bar{ data: { topbar: true } }
+    %ul.title-area
+      %li.name
+        %span= link_to image_tag('dispatch_logo_2.png', alt: "DISPATCH"), root_path, class: 'top-bar-logo'
+      %li.toggle-topbar.menu-icon= link_to 'Menu', '#'
+    %section.top-bar-section
+      - if account_signed_in?
+        %ul.right
+          = render "application/navigation/#{current_account.role}_navigation"
+          %li
+            = link_to 'Logout', destroy_account_session_path, method: :delete, class: 'top-bar-link'

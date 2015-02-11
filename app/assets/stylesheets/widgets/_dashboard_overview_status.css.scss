@@ -1,0 +1,74 @@
+.dashboard-overview-status {
+  @extend .vertical-container;
+
+  background: center left no-repeat transparent;
+  background-size: 1.5rem;
+  opacity: .8;
+
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.15rem;
+
+  display: block;
+  padding: 0.6rem 1rem 0.5rem 2rem;
+  margin: 0 1rem;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &, &:hover {
+    color: $cw-gray-20;
+  }
+
+  &.flowing {
+    background-image: image-url('status_icons/projects/flowing.png');
+  }
+
+  &.unknown {
+    background-image: image-url('status_icons/projects/unknown.png');
+  }
+
+  &.needs_maintenance {
+    background-image: image-url('status_icons/projects/needs_maintenance.png');
+  }
+
+  &.inactive {
+    background-image: image-url('status_icons/projects/inactive.png');
+  }
+
+  &.needs_visit {
+    background-image: image-url('status_icons/projects/needs_visit.png');
+  }
+}
+
+.dashboard-overview-status-label {
+  font-weight: 300;
+}
+
+.dashboard-overview-status-value {
+  @extend .vertically-centered;
+
+  font-weight: 500;
+  right: 0;
+
+  .dashboard-overview-status.flowing & {
+    color: $cw-green;
+  }
+
+  .dashboard-overview-status.needs_maintenance & {
+    color: $cw-red;
+  }
+
+  .dashboard-overview-status.inactive & {
+    color: $cw-dark-red;
+  }
+
+  .dashboard-overview-status.unknown & {
+    color: $cw-gray-20;
+  }
+
+  .dashboard-overview-status.needs_visit & {
+    color: $cw-yellow;
+  }
+}

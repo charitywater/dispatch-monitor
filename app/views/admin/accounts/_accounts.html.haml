@@ -1,0 +1,34 @@
+%header.row.vertical-container
+  %h1.medium-8.columns
+    Accounts
+    = link_to '+ Account', new_admin_account_path, class: 'button radius small button-add'
+  = render 'application/pagination/thin', items: accounts.items, filter_form: accounts.filter_form
+
+%section.row{ role: 'main' }
+  .medium-12.columns
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th Role
+          %th Program
+          %th Actions
+      %tbody
+        - accounts.items.each do |account|
+          %tr
+            %td= account.name
+            %td= account.email
+            %td= account.role
+            %td= account.program_name
+            %td
+              = link_to edit_admin_account_path(account), title: 'Edit Account' do
+                %span.ss-icon.ss-standard Edit
+              - if account != current_account
+                = link_to admin_account_path(account),
+                  title: 'Delete Account',
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to delete account #{account.email}?" } do
+                  %span.ss-icon.ss-standard Delete
+
+  = render 'application/pagination/wide', items: accounts.items, filter_form: accounts.filter_form

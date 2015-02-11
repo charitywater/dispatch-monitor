@@ -1,0 +1,39 @@
+- filter_form = projects.filter_form
+.medium-12.columns.vertical-container.clearfix
+  .row
+    = simple_form_for filter_form, url: projects_path, method: :get, as: filter_form.param_name, remote: true do |f|
+      - if policy(filter_form).filter_by_program?
+        .medium-5.columns
+          = f.input :program_id,
+            as: :select,
+            collection: Program.with_partner_and_country,
+            include_blank: '[Program]',
+            label_html: { class: 'hide-accessibly' },
+            input_html: { data: { behavior: 'autoSubmit' } }
+      .medium-3.columns.end
+        = f.input :status,
+          as: :select,
+          collection: enum_to_select_options_array(Project.statuses),
+          include_blank: '[Status]',
+          label_html: { class: 'hide-accessibly' },
+          input_html: { data: { behavior: 'autoSubmit' } }
+
+    = render 'application/pagination/thin', items: projects.items, filter_form: filter_form
+
+.medium-12.columns
+  %table
+    %thead
+      %tr
+        %th= sortable "Deployment Code", filter_form
+        %th Status
+        %th Country
+        %th Region
+        %th District
+        %th Community
+        %th Site
+        %th
+    %tbody
+      - projects.items.each do |project|
+        = render 'project', project: project
+
+= render 'application/pagination/wide', items: projects.items, filter_form: filter_form

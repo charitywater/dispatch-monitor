@@ -1,0 +1,53 @@
+.page-content
+  %header.row
+    %h1.medium-12.columns Import Survey Responses
+  %section.row{ role: 'main' }
+    .medium-12.columns
+      %p
+        Import all the responses from the
+        %i Source Observation V1
+        survey
+      = simple_form_for @import_survey, url: import_surveys_path do |f|
+        .hide= f.input :survey_type, as: :hidden, input_html: { value: :source_observation_v1 }
+        = f.submit 'Import Source Observation V1', class: 'button radius'
+
+      %p
+        Import all the responses from the
+        %i Source Observation V.02
+        survey
+      = simple_form_for @import_survey, url: import_surveys_path do |f|
+        .hide= f.input :survey_type, as: :hidden, input_html: { value: :source_observation_v02 }
+        = f.submit 'Import Source Observation V.02', class: 'button radius'
+
+      %p
+        Import all the responses from the
+        %i Maintenance Report V.02
+        survey
+      = simple_form_for @import_survey, url: import_surveys_path do |f|
+        .hide= f.input :survey_type, as: :hidden, input_html: { value: :maintenance_report_v02 }
+        = f.submit 'Import Maintenance Report V.02', class: 'button radius'
+
+      - unless Rails.env.production?
+        %p
+          Import all the responses from the
+          %i Source Observation V1 (Test)
+          survey
+        = simple_form_for @import_survey, url: import_surveys_path do |f|
+          .hide= f.input :survey_type, as: :hidden, input_html: { value: :test_source_observation_v1 }
+          = f.submit 'Import Source Observation V1 (Test)', class: 'button radius'
+
+        %p
+          Import all the responses from the
+          %i Source Observation V.02 (Test)
+          survey
+        = simple_form_for @import_survey, url: import_surveys_path do |f|
+          .hide= f.input :survey_type, as: :hidden, input_html: { value: :test_source_observation_v02 }
+          = f.submit 'Import Source Observation V.02 (Test)', class: 'button radius'
+
+        %p
+          Import all the responses from the
+          %i Maintenance Report V.02 (Test)
+          survey
+        = simple_form_for @import_survey, url: import_surveys_path do |f|
+          .hide= f.input :survey_type, as: :hidden, input_html: { value: :test_maintenance_report_v02 }
+          = f.submit 'Import Maintenance Report V.02 (Test)', class: 'button radius'

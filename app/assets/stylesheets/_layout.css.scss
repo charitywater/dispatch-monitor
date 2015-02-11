@@ -1,0 +1,22 @@
+body {
+  height: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.02em;
+}
+
+#main-section {
+  $alert-box-height: 43px;
+  height: 100%;
+  height: calc(100% - #{$topbar-height} - #{$alert-box-height});
+}
+
+.page-content {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}

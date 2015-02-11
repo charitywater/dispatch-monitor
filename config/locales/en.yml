@@ -1,0 +1,125 @@
+en:
+  admin:
+    accounts:
+      create:
+        success: '"%{email}" account has been successfully created.'
+        alert: There were one or more errors while trying to create the account.
+      update:
+        success: '"%{email}" account has been successfully updated.'
+        alert: There were one or more errors while trying to update the account.
+      destroy:
+        success: '"%{email}" account has been successfully deleted.'
+    application_settings:
+      update:
+        success: LOOKOUT options have been successfully updated.
+        alert: There were one or more errors while trying to update the LOOKOUT options.
+    email_subscriptions:
+      create:
+        success: "%{name_and_email} has been successfully subscribed to %{subscription_type}"
+        alert: There were one or more errors while trying to create the email subscription.
+      destroy:
+        success: "%{name_and_email} has been successfully unsubscribed from %{subscription_type}"
+  application:
+    disclaimer:
+      message: |
+        Note: This site is under development and statistics aren't guaranteed to be 100% accurate.
+        Please refrain from sharing any information outside of the organization.
+    mailer:
+      survey_response:
+        source_observation_v1: Source Observation V1
+        source_observation_v02: Source Observation V.02
+        test_source_observation_v1: Test Source Observation V1
+        test_source_observation_v02: Test Source Observation V.02
+      maintenance_report:
+        maintenance_report_v02: Maintenance Report V.02
+        test_maintenance_report_v02: Test Maintenance Report V.02
+    unauthorized: You do not have permission to perform this action.
+  import:
+    projects:
+      create:
+        success: Your projects are being imported now. You will receive an email when they are finished.
+        alert: There were one or more errors while trying to import your projects.
+    surveys:
+      create:
+        success: Your surveys are being imported now. You will receive an email when they are finished.
+        alert: There were one or more errors while trying to import your surveys.
+  projects:
+    destroy:
+      success: "%{deployment_code} at %{community_name} has been successfully deleted."
+    update:
+      success: "%{deployment_code} at %{community_name} has been successfully updated."
+      alert: There were one or more errors while trying to update the project.
+  sensors:
+    create:
+      success: "Sensor %{device_id} %{imei} has been successfully added to %{deployment_code} at %{community_name}."
+      alert: There were one or more errors while trying to create the sensor.
+    destroy:
+      success: "Sensor %{device_id} %{imei} has been successfully deleted from %{deployment_code} at %{community_name}."
+  settings:
+    update:
+      success: Your account has been successfully updated.
+      alert: There were one or more errors while trying to update your account.
+  simple_form:
+    labels:
+      sensor_project:
+        deployment_code: Deployment Code
+        device_id: Device ID
+      project:
+        beneficiaries: Beneficiaries
+        community_name: Community Name
+        contact_email: Contact Email
+        contact_name: Contact Name
+        contact_phone_numbers: Contact Phone Numbers
+        cost_actual: Cost Actual
+        district: District
+        funding_source: Funding Source
+        image_url: Image URL
+        inventory_cost: Inventory Cost
+        inventory_group: Inventory Group
+        inventory_type: Inventory Type
+        is_ready_to_fund: Is Ready to Fund
+        latitude: Latitude
+        location_type: Location Type
+        longitude: Longitude
+        package_id: Package ID
+        package_name: Package Name
+        plaque_text: Plaque Text
+        possible_location_types: Possible Location Types
+        quarter: Quarter
+        region: Region
+        resubmission_notes: Resubmission Notes
+        revenue_category: Revenue Category
+        revenue_category_display_label: Revenue Category Display Label
+        review_status_name: Review Status Name
+        site_name: Site Name
+        state: State
+        sub_district: Sub-District
+        system_name: System Name
+        water_point_name: Water Point Name
+      ticket:
+        project_status: Project Status
+      account:
+        timezone: Time Zone
+  tickets:
+    complete:
+      success: "Ticket #%{id} has been successfully completed. %{deployment_code} at %{community_name} is now %{project_status}."
+      alert: ""
+    create:
+      success: "Ticket #%{id} has been successfully created."
+      alert: There were one or more errors while trying to create the ticket.
+    destroy:
+      success: "Ticket #%{id} has been successfully deleted."
+  time:
+    formats:
+      date: '%Y-%m-%d'
+      globalstar: '%d/%m/%Y %H:%M:%S GMT'
+      gps: '%Y/%m/%d %H:%M:%S'
+  vehicles:
+    create:
+      success: "New %{vehicle_type} with gps unit %{esn} has been successfully added."
+      alert: There were one or more errors while trying to create the vehicle.
+    update:
+      success: "%{esn} has been successfully updated."
+      alert: There were one or more errors while trying to update the vehicle.
+    destroy:
+      success: "Vehicle %{esn} has been successfully deleted."

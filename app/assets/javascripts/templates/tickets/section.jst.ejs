@@ -1,0 +1,21 @@
+<% for(var i=0; i < tickets.length; i++) { %>
+  <%= JST['templates/tickets/ticket'](tickets[i]) %>
+<% } %>
+<% if (tickets.length === 0) { %>
+  <div class="row detailed-info-item">
+    <div class="detailed-info-item-value medium-12 columns"><i>No tickets</i></div>
+  </div>
+<% } %>
+
+<% if (allows_new_ticket) { %>
+  <div class="row detailed-info-item">
+    <div class="detailed-info-item-value medium-12 columns">
+      <a
+        class="button secondary radius"
+        href="<%= RemoteMonitoring.routes.new_project_ticket_path(project_id) %>"
+        >
+        + Ticket
+      </a>
+    </div>
+  </div>
+<% } %>

@@ -1,0 +1,28 @@
+.page-content
+  .row
+    .small-12.columns
+      .breadcrumb-link
+        = link_to admin_email_subscriptions_path do
+          %span.ss-icon.ss-navigateleft.ss-standard
+          Email Subscriptions
+
+  %header.row.vertical-container
+    %h1.medium-12.columns
+      Add Email Subscription
+
+  %section.row{ role: 'main' }
+    = simple_form_for [:admin, @email_subscription],
+      url: admin_email_subscriptions_path,
+      as: :email_subscription do |f|
+      = f.input :subscription_type,
+        as: :hidden,
+        input_html: { value: :bulk_import_notifications }
+      .medium-12.columns
+        = f.association :account,
+          as: :select,
+          required: true,
+          collection: @email_subscription.available_accounts,
+          label_method: :name_and_email,
+          value_method: :id,
+          include_blank: 'Please select an account'
+      .medium-12.columns= f.submit 'Add Subscription', class: 'button radius'

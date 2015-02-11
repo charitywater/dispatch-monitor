@@ -1,0 +1,35 @@
+%header.row.vertical-container
+  %h1.medium-12.columns
+    Vehicles
+    = link_to '+ Vehicles', new_vehicle_path, class: 'button radius small button-add'
+
+  = render 'application/pagination/thin', items: vehicles.items, filter_form: vehicles.filter_form
+
+%section.row{ role: 'main' }
+  .medium-12.columns
+    %table
+      %thead
+        %tr
+          %th ESN
+          %th Vehicle Type
+          %th Latest Transmission Time
+          %th Latitude
+          %th Longitude
+          %th Program
+          %th Link
+          %th
+      %tbody
+        - vehicles.items.each do |vehicle|
+          %tr
+            %td= vehicle.esn
+            %td= vehicle.vehicle_type
+            %td= vehicle.latest_transmission_time
+            %td= vehicle.latest_transmission_latitude
+            %td= vehicle.latest_transmission_longitude
+            %td= vehicle.program
+            %td= link_to 'Map', vehicle.map_link
+            %td
+              = link_to edit_vehicle_path(vehicle), title: 'Edit Vehicle' do
+                %span.ss-icon.ss-standard Edit
+
+  = render 'application/pagination/wide', items: vehicles.items, filter_form: vehicles.filter_form

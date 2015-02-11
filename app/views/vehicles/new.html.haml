@@ -1,0 +1,15 @@
+.page-content
+  %header.row
+    %h1.medium-12.columns Add New Vehicle
+
+  %section.row{ role: 'main' }
+    = simple_form_for @vehicle, url: vehicles_path do |f|
+      .medium-12.columns= f.input :esn, as: :string, placeholder: 'e.g. 0-1234567'
+      .medium-12.columns= f.input :vehicle_type, as: :string, placeholder: 'e.g. bike'
+      .medium-12.columns
+        = f.input :program_id,
+          as: :select,
+          required: true,
+          collection: Program.with_partner_and_country,
+          include_blank: 'Please select program'
+      .medium-12.columns= f.submit 'Add', class: 'button radius'

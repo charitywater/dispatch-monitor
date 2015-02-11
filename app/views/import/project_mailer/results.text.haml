@@ -1,0 +1,9 @@
+Dear #{recipient.name},
+
+- [:created, :updated, :invalid].each do |status|
+  - if local_assigns[status].present?
+    = precede "\n" do
+      #{pluralize(local_assigns[status].count, 'project was', 'projects were')} #{status.to_s}:
+      - local_assigns[status].each do |deployment_code|
+        = precede "    " do
+          = deployment_code

@@ -1,0 +1,23 @@
+.page-content{ role: 'main' }
+  %header.row
+    %h1.medium-12.columns Your Settings
+
+  %section.row
+    = simple_form_for @account, url: settings_path(@account) do |f|
+      .medium-12.columns
+        = f.input :name, required: true
+      .medium-12.columns
+        = f.input :email, as: :email, required: true
+      .medium-12.columns
+        = f.input :password, as: :password
+      .medium-12.columns
+        = f.input :timezone,
+          as: :select,
+          collection: all_country_timezones,
+          include_blank: false
+      .medium-12.columns
+        = f.input :weekly_subscription,
+          label: 'Subscribe to weekly reports',
+          input_html: { autocomplete: :off }
+      .medium-12.columns
+        = f.submit 'Update Account', class: 'button radius'

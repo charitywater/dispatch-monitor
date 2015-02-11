@@ -1,0 +1,20 @@
+.top-bar-section {
+  .top-bar-link {
+    letter-spacing: 0.05em;
+  }
+}
+
+.top-bar {
+  .name {
+    .top-bar-title {
+      color: $cw-yellow;
+      letter-spacing: 0.18em;
+    }
+  }
+}
+
+.top-bar-logo img {
+  width: 150px;
+  padding-top: 10px;
+  margin-left: 15px;
+}

@@ -1,0 +1,34 @@
+.page-content
+  %header.row
+    %h1.medium-12.columns Edit Account
+
+  %section.row{ role: 'main' }
+    = simple_form_for [:admin, @account] do |f|
+      .medium-12.columns
+        = f.input :name,
+          required: true,
+          input_html: { autocomplete: :off }
+      .medium-12.columns
+        = f.input :email,
+          as: :email,
+          required: true,
+          input_html: { autocomplete: :off }
+      .medium-12.columns
+        = f.input :password,
+          as: :password,
+          input_html: { autocomplete: :off }
+      .medium-12.columns
+        = f.input :role,
+          as: :select,
+          required: true,
+          disabled: true,
+          collection: enum_to_select_options_array(Account.roles)
+      - if (@account.program_manager? || @account.viewer?)
+        .medium-12.columns#program
+          = f.input :program_id,
+            as: :select,
+            required: true,
+            collection: Program.with_partner_and_country,
+            include_blank: 'All Programs',
+            prompt: 'Please select program'
+      .medium-12.columns= f.button :submit, class: 'button radius'

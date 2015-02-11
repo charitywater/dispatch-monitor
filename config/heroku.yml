@@ -1,0 +1,39 @@
+#
+# Format:
+#
+# <stage name>:
+#   app: <Heroku app name>
+#   stack: <Heroku stack, optional>
+#   tag: <git tag pattern, optional>
+#   repo: <git repository, optional>
+#   config:
+#     - <Heroku config:var name>: <Heroku config:var value>
+#
+
+staging:
+  app: cw-monitoring-staging
+  config: &default
+    BUNDLE_WITHOUT: "development:test"
+  addons:
+    - heroku-postgresql:hobby-basic
+    - newrelic:stark
+    - papertrail:fixa
+    - pgbackups:auto-month
+    - redistogo:nano
+    - scheduler:standard
+    - sendgrid:bronze
+    - sentry:developer
+
+production:
+  app: cw-monitoring
+  config: *default
+  addons:
+    - heroku-postgresql:hobby-basic
+    - newrelic:stark
+    - papertrail:fixa
+    - pgbackups:auto-month
+    - redistogo:nano
+    - scheduler:standard
+    - sendgrid:bronze
+    - sentry:developer
+    - ssl:endpoint

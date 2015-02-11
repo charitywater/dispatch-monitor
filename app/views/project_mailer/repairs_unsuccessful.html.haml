@@ -1,0 +1,12 @@
+%p A new survey response is reporting that repairs at the following project were unsuccessful:
+
+%ul{style: 'list-style-type: none; margin-left: 0; padding-left: 0;'}
+  %li{style: 'margin-left: 0; padding-left: 0;'}= @project.community_name
+  %li{style: 'margin-left: 0; padding-left: 0;'}= @project.deployment_code
+  %li{style: 'margin-left: 0; padding-left: 0;'}
+    Reported as still needing maintenance on
+    %span{style: 'white-space: nowrap;'}= l @survey_response.submitted_at, format: :date
+
+%ul{style: 'list-style-type: none; margin-left: 0; padding-left: 0;'}
+  %li{style: 'margin-left: 0; padding-left: 0;'}= link_to 'View project details', map_project_url(@project)
+  %li{style: 'margin-left: 0; padding-left: 0;'}= link_to 'View survey response', @survey_response.fluid_surveys_url

@@ -1,0 +1,10 @@
+A new survey response is reporting that the following project now needs maintenance:
+
+= precede "\n" do
+  #{@project.community_name}
+  #{@project.deployment_code}
+  Reported as needing maintenance on #{l @survey_response.submitted_at, format: :date}
+
+= precede "\n" do
+  View project details: #{map_project_url(@project)}
+  View survey response: #{@survey_response.fluid_surveys_url}

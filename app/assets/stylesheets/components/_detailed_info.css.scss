@@ -1,0 +1,179 @@
+$detailed-info-side-padding: 1.7rem;
+$detailed-info-top-padding: 1.6rem;
+$detailed-info-item-margin-bottom: 0.75rem;
+
+.detailed-info-header {
+  background-color: $cw-gray-50;
+  padding: $detailed-info-top-padding $detailed-info-side-padding;
+  text-transform: capitalize;
+
+  &.in_progress, &.overdue, &.needs_maintenance {
+    border-right: $cw-red solid 10px;
+  }
+
+  &.complete, &.flowing {
+    border-right: $cw-green solid 10px;
+  }
+
+  &.unknown {
+    border-right: $cw-gray-30 solid 10px;
+  }
+
+  &.inactive {
+    border-right: $cw-dark-red solid 10px;
+  }
+
+  &.needs_visit {
+    border-right: $cw-yellow solid 10px;
+  }
+}
+
+.detailed-info-header-title, .detailed-info-header-subtitle {
+  margin: 0;
+
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+
+.detailed-info-header-title {
+  font-size: 1.4rem;
+
+  .detailed-info-header.in_progress &,
+  .detailed-info-header.overdue &,
+  .detailed-info-header.needs_maintenance & {
+    color: $cw-red;
+  }
+
+  .detailed-info-header.complete &,
+  .detailed-info-header.flowing & {
+    color: $cw-green;
+  }
+
+  .detailed-info-header.unknown & {
+    color: $cw-gray-30;
+  }
+
+  .detailed-info-header.inactive & {
+    color: $cw-dark-red;
+  }
+
+  .detailed-info-header.needs_visit & {
+    color: $cw-yellow;
+  }
+}
+
+.detailed-info-header-subtitle {
+  color: lighten($cw-gray-30, 15%);
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.detailed-info-header-icon {
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  background: transparent no-repeat;
+  background-size: 2.5rem;
+
+  .detailed-info-header.in_progress & {
+    background-image: image-url("status_icons/tickets/in_progress.png");
+  }
+
+  .detailed-info-header.complete & {
+    background-image: image-url("status_icons/tickets/complete.png");
+  }
+
+  .detailed-info-header.overdue & {
+    background-image: image-url("status_icons/tickets/overdue.png");
+  }
+
+  .detailed-info-header.unknown & {
+    background-image: image-url("status_icons/projects/unknown.png");
+  }
+
+  .detailed-info-header.needs_maintenance & {
+    background-image: image-url("status_icons/projects/needs_maintenance.png");
+  }
+
+  .detailed-info-header.flowing & {
+    background-image: image-url("status_icons/projects/flowing.png");
+  }
+
+  .detailed-info-header.inactive & {
+    background-image: image-url("status_icons/projects/inactive.png");
+  }
+
+  .detailed-info-header.needs_visit & {
+    background-image: image-url("status_icons/projects/needs_visit.png");
+  }
+}
+
+.detailed-info-body {
+  background-color: $cw-white;
+  color: $cw-gray-20;
+  font-weight: 300;
+  letter-spacing: 0.08rem;
+  padding: 0 $detailed-info-side-padding;
+}
+
+.detailed-info-body-section {
+  border-bottom: 2px $cw-gray-40 solid;
+  padding-top: $detailed-info-top-padding;
+  padding-bottom: $detailed-info-top-padding;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.detailed-info-body-section-heading {
+  color: $cw-blue;
+  text-transform: uppercase;
+  font-size: 1.0rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  margin-bottom: $detailed-info-item-margin-bottom;
+}
+
+.detailed-info-item {
+  line-height: 1.6rem;
+
+  &, &.row {
+    margin-bottom: $detailed-info-item-margin-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.detailed-info-item-label {
+  font-weight: 500;
+}
+
+.detailed-info-item-value {
+  word-wrap: break-word;
+}
+
+.detailed-info-footer {
+  background-color: $cw-gray-50;
+  padding: $detailed-info-top-padding $detailed-info-side-padding;
+
+  input {
+    margin-bottom: 0;
+  }
+
+  .button {
+    margin: 0 0.7rem 0 0;
+  }
+}
+
+.detailed-info-footer-icon {
+  padding-top: 0.6rem;
+  font-size: 1.8rem;
+}
+
+.detailed-info-comment {
+  font-style: italic;
+}

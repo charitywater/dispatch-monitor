@@ -1,0 +1,48 @@
+- filter_form = tickets.filter_form
+.medium-12.columns.vertical-container.clearfix
+  .row
+    = simple_form_for filter_form, url: tickets_path, method: :get, as: filter_form.param_name, remote: true do |f|
+      - if policy(filter_form).filter_by_program?
+        .medium-5.columns
+          = f.input :program_id,
+            as: :select,
+            collection: Program.with_partner_and_country,
+            include_blank: '[Program]',
+            label_html: { class: 'hide-accessibly' },
+            input_html: { data: { behavior: 'autoSubmit' } }
+      .medium-3.columns.end
+        = f.input :status,
+          as: :select,
+          collection: enum_to_select_options_array(Ticket.statuses),
+          include_blank: '[Status]',
+          label_html: { class: 'hide-accessibly' },
+          input_html: { data: { behavior: 'autoSubmit' } }
+
+    = render 'application/pagination/thin', items: tickets.items, filter_form: filter_form
+
+.medium-12.columns
+  %table
+    %thead
+      %tr
+        %th ID
+        %th Community
+        %th Deployment Code
+        %th Status
+        %th Start Date
+        %th Due Date
+        %th Completion Date
+    %tbody
+      - tickets.items.each do |ticket|
+        %tr
+          %td= link_to ticket.id, ticket_path(ticket)
+          %td= ticket.community_name
+          %td= ticket.deployment_code
+          %td= ticket.status_tag
+          %td
+            %span.date= ticket.started_at
+          %td
+            %span.date= ticket.due_at || '—'
+          %td
+            %span.date= ticket.completed_at || '—'
+
+= render 'application/pagination/wide', items: tickets.items, filter_form: filter_form

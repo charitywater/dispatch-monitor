@@ -1,0 +1,14 @@
+.page-content
+  %header.row.vertical-container
+    %h1.medium-8.columns
+      Project Dashboard
+      - if policy(Import::Project).manage?
+        = link_to '+ Projects', new_import_project_path, class: 'button radius small button-add'
+        = link_to '+ Surveys', new_import_survey_path, class: 'button radius small button-add'
+  %section.row
+    = form_tag projects_search_path, :method => "get" do
+      %span.medium-5.columns
+        = text_field_tag :deployment_code, nil, :placeholder => 'Search by deployment code (e.g. ET.GOH.Q2.13.144.001)'
+      = submit_tag 'Search', class: 'button radius small'
+  %section.row#projects{ data: { behavior: 'rewire' }, role: 'main' }
+    = render 'projects', projects: @projects

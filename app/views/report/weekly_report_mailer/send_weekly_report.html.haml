@@ -1,0 +1,24 @@
+%p Dear #{recipient.name},
+
+%p Here is your weekly report from #{week_start} to #{week_end}:
+
+%br **Summary**
+%br #{pluralize(flowing_count, 'project was', 'projects were')} fixed
+%br #{pluralize(maintenance_count, 'new project requires', 'new projects require')} maintenance
+%br #{pluralize(visit_count, 'new project needs', 'new projects need')} a visit
+
+%p **Details**
+- if flowing_codes.any?
+  %br Projects that were fixed:
+  - flowing_codes.each do |deployment_code|
+    %br= link_to deployment_code, project_url(Project.find_by(deployment_code: deployment_code))
+
+- if maintenance_codes.any?
+  %br New projects that require maintenance:
+  - maintenance_codes.each do |deployment_code|
+    %br= link_to deployment_code, project_url(Project.find_by(deployment_code: deployment_code))
+
+- if visit_codes.any?
+  %br New projects that need a visit:
+  - visit_codes.each do |deployment_code|
+    %br= link_to deployment_code, project_url(Project.find_by(deployment_code: deployment_code))

@@ -1,0 +1,13 @@
+.page-content
+  %header.row
+    %h1.medium-12.columns Import Projects
+  %section.row{ role: 'main' }
+    = simple_form_for @import_project, url: import_projects_path do |pi|
+      .medium-12.columns
+        -# multiline placeholder can be 'faked' with having enough spaces to force wrapping. Ugly? Yes.
+        = pi.input :import_codes,
+          as: :text,
+          input_html: { rows: 5 },
+          placeholder: "ET.GOH.Q4.09.048#{' ' * 1000}ET.GOH.Q4.09.048.123#{' ' * 1000}ET.GOH.Q4.09.048.124#{' ' * 1000}ET.GOH.Q4.09.048.125"
+      .medium-12.columns
+        = pi.submit 'Import', class: 'button radius'

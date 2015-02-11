@@ -1,0 +1,13 @@
+-#  Link to the "Last" page
+-#  available local variables
+-#    url:           url to the last page
+-#    current_page:  a page object for the currently displayed page
+-#    total_pages:   total number of pages
+-#    per_page:      number of items to fetch per page
+-#    remote:        data-remote
+%span.pagination-unit.pagination-last
+  - unless current_page.last?
+    = link_to url, remote: remote do
+      %span.pagination-text Last
+      %span.ss-icon.ss-standard.ss-navigateright
+      %span.ss-icon.ss-standard.ss-navigateright

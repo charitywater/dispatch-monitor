@@ -1,0 +1,9 @@
+.ss-icon {
+  a & {
+    color: lighten($cw-gray-30, 15%);
+  }
+
+  a:hover & {
+    color: $cw-gray-30;
+  }
+}

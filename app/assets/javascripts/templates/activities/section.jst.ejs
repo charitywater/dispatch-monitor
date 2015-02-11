@@ -1,0 +1,8 @@
+<% for(var i=0; i < activities.length; i++) { %>
+  <%= JST['templates/activities/activity'](activities[i]) %>
+<% } %>
+<% if (activities.length === 0) { %>
+  <div class="row detailed-info-item">
+    <div class="detailed-info-item-value medium-12 columns"><i>No activities</i></div>
+  </div>
+<% } %>

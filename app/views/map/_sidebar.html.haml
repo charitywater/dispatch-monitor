@@ -1,0 +1,15 @@
+.map-sidebar.medium-4.columns
+  .row
+    .medium-12.columns
+      = simple_form_for map.filter_form, url: map_path, method: :get, as: map.filter_form.param_name do |f|
+        = f.input :status,
+          as: :select,
+          collection: enum_to_select_options_array(Project.statuses),
+          include_blank: 'All Status',
+          label_html: { class: 'hide-accessibly' },
+          input_html: { data: { behavior: 'selectMapLayer' } }
+
+  .map-sidebar-content
+    .span{ data: { behavior: 'showDetailedInfo' } }
+    - if @map.selected_project && !current_account.viewer?
+      .span{ data: { behavior: 'showDetailedInfoButtons' } }

@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%p
+  %b Show:
+  = @weekly_log.show
+%p
+  %b Index:
+  = @weekly_log.index
+
+= link_to 'Back', weekly_logs_path

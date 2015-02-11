@@ -1,0 +1,43 @@
+#project.page-content.row
+  .small-12.columns
+    .row
+      .small-12.columns
+        .breadcrumb-link
+          = link_to projects_path do
+            %span.ss-icon.ss-navigateleft.ss-standard
+            Project Dashboard
+
+    .row
+      .small-12.columns
+        %header.detailed-info-header.vertical-container{ class: @project.status }
+          %h1.detailed-info-header-title= @project.community_name
+          %h2.detailed-info-header-subtitle= @project.country
+          .detailed-info-header-icon.vertically-centered
+
+    = simple_form_for @project do |f|
+      .row
+        .small-12.columns
+          %section.detailed-info-body{ role: 'main' }
+            %section.detailed-info-body-section
+              - %i(beneficiaries community_name contact_email contact_name).each do |field|
+                = render 'form_row', f: f, field: field
+
+              .detailed-info-body-section-content
+                .row.detailed-info-item
+                  .medium-6.columns.detailed-info-item-label
+                    = f.label :contact_phone_numbers, class: 'inline', required: false
+                  .medium-6.columns.detailed-info-item-value
+                    - f.object.contact_phone_numbers.each_with_index do |pn, i|
+                      = text_field_tag "project[contact_phone_numbers][#{i}]", pn, required: false, label: false
+                    = link_to 'Add Phone Number', '#',
+                      class: 'button small secondary full-width',
+                      data: { behavior: 'addPhoneNumber' }
+
+              - %i(cost_actual district funding_source image_url inventory_cost inventory_group inventory_type is_ready_to_fund latitude location_type longitude package_id package_name plaque_text possible_location_types quarter region resubmission_notes revenue_category revenue_category_display_label review_status_name site_name state sub_district system_name water_point_name).each do |field|
+                = render 'form_row', f: f, field: field
+
+      .row
+        .small-12.columns
+          %footer.detailed-info-footer
+            = f.submit 'Update Project', class: 'button radius'
+            = link_to 'Cancel', projects_path, class: 'button radius secondary'

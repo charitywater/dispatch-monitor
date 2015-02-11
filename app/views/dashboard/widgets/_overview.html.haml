@@ -1,0 +1,33 @@
+.medium-4.columns
+  %section.dashboard-widget
+    %header.dashboard-widget-header
+      %h2.dashboard-widget-header-title Overview
+    %section.dashboard-widget-content.dashboard-widget-content-no-padding
+      - flowing_params = { filters: { status: :flowing, program_id: dashboard.filter_form.program_id } }
+      = link_to projects_path(flowing_params), class: 'dashboard-overview-status flowing' do
+        %span.dashboard-overview-status-value.right= dashboard.flowing_project_count
+        %span.dashboard-overview-status-label Flowing
+
+      - needs_maintenance_params = { filters: { status: :needs_maintenance, program_id: dashboard.filter_form.program_id } }
+      = link_to projects_path(needs_maintenance_params), class: 'dashboard-overview-status needs_maintenance' do
+        %span.dashboard-overview-status-value.right= dashboard.needs_maintenance_project_count
+        %span.dashboard-overview-status-label Needs Maintenance
+
+      - needs_visit_params = { filters: { status: :needs_visit, program_id: dashboard.filter_form.program_id } }
+      = link_to projects_path(needs_visit_params), class: 'dashboard-overview-status needs_visit' do
+        %span.dashboard-overview-status-value.right= dashboard.needs_visit_project_count
+        %span.dashboard-overview-status-label Needs Visit
+
+      - inactive_params = { filters: { status: :inactive, program_id: dashboard.filter_form.program_id } }
+      = link_to projects_path(inactive_params), class: 'dashboard-overview-status inactive' do
+        %span.dashboard-overview-status-value.right= dashboard.inactive_project_count
+        %span.dashboard-overview-status-label Inactive
+
+      - unknown_params = { filters: { status: :unknown, program_id: dashboard.filter_form.program_id } }
+      = link_to projects_path(unknown_params), class: 'dashboard-overview-status unknown' do
+        %span.dashboard-overview-status-value.right= dashboard.unknown_project_count
+        %span.dashboard-overview-status-label Unknown
+    %footer.dashboard-widget-footer
+      - list_params = { dashboard.filter_form.param_name => { program_id: dashboard.filter_form.program_id } }
+      = link_to projects_path(list_params), class: 'dashboard-widget-footer-icon right' do
+        %span.ss-icon.ss-symbolicons-block List

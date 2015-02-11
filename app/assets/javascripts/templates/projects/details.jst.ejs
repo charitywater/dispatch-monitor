@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="small-12 columns">
+    <header class="detailed-info-header vertical-container <%= status %>">
+      <h1 class="detailed-info-header-title"><%= community_name %></h1>
+      <h2 class="detailed-info-header-subtitle"><%= country %></h2>
+      <div class="detailed-info-header-icon vertically-centered"></div>
+    </header>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <section class="detailed-info-body" role="main">
+      <section class="detailed-info-body-section">
+        <h3 class="detailed-info-body-section-heading">Details</h3>
+        <div class="detailed-info-body-section-content">
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Status</div>
+            <div class="detailed-info-item-value medium-6 columns priority">
+              <%= JST['templates/projects/status']({ status: status }) %>
+            </div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Inventory Type</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= inventory_type || '–' %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Beneficiaries</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= beneficiaries || '–' %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Location Type</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= location_type || '–' %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Partner</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= partner %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Deployment Code</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= deployment_code %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Completion Date</div>
+            <div class="detailed-info-item-value medium-6 columns">
+              <span class="date"><%= completion_date %></span>
+            </div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Contact Name</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= contact_name || '–' %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Contact Email</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= contact_email || '–' %></div>
+          </div>
+
+          <div class="row detailed-info-item">
+            <div class="detailed-info-item-label medium-6 columns">Phone Number(s)</div>
+            <div class="detailed-info-item-value medium-6 columns"><%= contact_phone_numbers.length == 0 ? '–' : contact_phone_numbers.join(', ')%></div>
+          </div>
+        </div>
+      </section>
+      <section class="detailed-info-body-section">
+        <h3 class="detailed-info-body-section-heading">Activity</h3>
+        <div class="detailed-info-body-section-content"
+          data-behavior="loadDetailedInfoBodySection"
+          data-url="<%= RemoteMonitoring.routes.map_project_activities_path(id, { format: 'json' }) %>"
+          data-template="templates/activities/section"
+        >
+          <%= JST['templates/loading']() %>
+        </div>
+      </section>
+      <section class="detailed-info-body-section">
+        <h3 class="detailed-info-body-section-heading">Tickets</h3>
+        <div class="detailed-info-body-section-content"
+          data-behavior="loadDetailedInfoBodySection"
+          data-url="<%= RemoteMonitoring.routes.map_project_tickets_path(id, { format: 'json' }) %>"
+          data-template="templates/tickets/section"
+        >
+          <%= JST['templates/loading']() %>
+        </div>
+      </section>
+      <% if (has_sensor) { %>
+        <section class="detailed-info-body-section">
+          <h3 class="detailed-info-body-section-heading">Sensor</h3>
+          <div class="detailed-info-body-section-content"
+            data-behavior="loadDetailedInfoBodySection"
+            data-url="<%= RemoteMonitoring.routes.map_project_sensors_path(id, { format: 'json' }) %>"
+            data-template="templates/sensors/section"
+          >
+            <%= JST['templates/loading']() %>
+          </div>
+        </section>
+      <% } %>
+    </section>
+  </div>
+</div>

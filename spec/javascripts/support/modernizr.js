@@ -1,0 +1,3 @@
+window.Modernizr = {
+  history: true
+};

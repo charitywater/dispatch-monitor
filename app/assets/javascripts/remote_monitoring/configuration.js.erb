@@ -1,0 +1,33 @@
+(function(RemoteMonitoring) {
+  'use strict';
+
+  RemoteMonitoring.configuration = {
+    nearbyAnimation: <%= Rails.env.test? ? 'google.maps.Animation.BOUNCE' : 'null' %>,
+    icons: {
+      secondary: {
+        unknown: '<%= image_url 'map_icons/unknown16x16.png' %>',
+        needs_maintenance: '<%= image_url 'map_icons/needs_maintenance16x16.png' %>',
+        flowing: '<%= image_url 'map_icons/flowing16x16.png' %>',
+        inactive: '<%= image_url 'map_icons/inactive16x16.png' %>',
+        needs_visit: '<%= image_url 'map_icons/needs_visit16x16.png' %>'
+      },
+      selected: {
+        unknown: '<%= image_url 'map_icons/selected_unknown16x16.png' %>',
+        needs_maintenance: '<%= image_url 'map_icons/selected_needs_maintenance16x16.png' %>',
+        flowing: '<%= image_url 'map_icons/selected_flowing16x16.png' %>',
+        inactive: '<%= image_url 'map_icons/selected_inactive16x16.png' %>',
+        needs_visit: '<%= image_url 'map_icons/selected_needs_visit16x16.png' %>'
+      }
+    },
+    statusText: {
+      needs_maintenance: 'Needs Maintenance',
+      flowing: 'Flowing',
+      unknown: 'Unknown',
+      inactive: 'Inactive',
+      needs_visit: 'Needs Visit',
+      in_progress: 'In Progress',
+      complete: 'Complete',
+      overdue: 'Overdue'
+    }
+  };
+})(RemoteMonitoring);

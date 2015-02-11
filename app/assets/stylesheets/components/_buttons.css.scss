@@ -1,0 +1,15 @@
+button, .button {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.button.tiny {
+  padding: 0.5rem 1.2rem;
+  margin: 0;
+}
+
+.button.button-add {
+  vertical-align: text-top;
+  margin-left: 1rem;
+  padding: 0.7rem 0.8rem;
+}

@@ -1,0 +1,4 @@
+@mixin icon-outline($color: $cw-gray-10) {
+  color: $cw-white;
+  text-shadow: -1px -1px 0 $color, 1px -1px 0 $color, -1px 1px 0 $color, 1px 1px 0 $color;
+}

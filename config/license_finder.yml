@@ -1,0 +1,30 @@
+---
+whitelist:
+- Apache 2.0
+- Artistic
+- BSD
+- Boost
+- CDDL
+- CPL
+- EPL
+- FLTK
+- Heroku
+- LGPL 2.1
+- MIT
+- MPL
+- MySql2
+- OpenLDAP
+- OpenSSL
+- PHP
+- Public Domain
+- Python
+- Rdoc
+- Ruby
+- Ruby on Rails
+- SSLeay
+- zlib/libpng
+ignore_groups:
+- test
+- development
+dependencies_file_dir: './doc/'
+project_name: remote_monitoring

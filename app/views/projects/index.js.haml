@@ -1,0 +1,2 @@
+$('#projects').html('#{j render('projects', projects: @projects)}');
+if (Modernizr.history) { history.pushState({}, '', '#{projects_path(@projects.filter_form.to_query_params).html_safe}'); }

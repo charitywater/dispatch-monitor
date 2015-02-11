@@ -1,0 +1,15 @@
+.medium-12.columns
+  %table
+    %thead
+      %tr
+        %th Deployment Code
+        %th Status
+        %th Country
+        %th Region
+        %th District
+        %th Community
+        %th Site
+        %th
+    %tbody
+      - projects.each do |project|
+        = render 'project', project: project

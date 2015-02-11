@@ -1,0 +1,91 @@
+.status {
+  &.positive {
+    color: $cw-green;
+  }
+
+  &.negative {
+    color: $cw-red;
+  }
+
+  &.double-plus-ungood {
+    color: $cw-dark-red;
+  }
+
+  .priority & {
+    font-weight: 400;
+  }
+}
+
+a.status {
+  &.positive:hover {
+    color: $cw-green-hover;
+  }
+
+  &.negative:hover {
+    color: $cw-red-hover;
+  }
+
+  &.double-plus-ungood:hover {
+    color: $cw-dark-red-hover;
+  }
+}
+
+.ticket-status {
+  @extend .status;
+
+  &.in_progress, &.overdue {
+    @extend .status.negative;
+  }
+
+  &.complete {
+    @extend .status.positive;
+  }
+}
+
+a.ticket-status {
+  &.in_progress:hover, &.overdue:hover {
+    @extend a.status.negative:hover;
+  }
+
+  &.complete:hover {
+    @extend a.status.positive:hover;
+  }
+}
+
+.project-status {
+  @extend .status;
+
+  &.flowing {
+    @extend .status.positive;
+  }
+
+  &.needs_maintenance {
+    @extend .status.negative;
+  }
+
+  &.inactive {
+    @extend .status.double-plus-ungood;
+  }
+
+  &.needs_visit {
+    color: $cw-yellow;
+  }
+}
+
+a.project-status {
+  &.flowing:hover {
+    @extend a.status.positive:hover;
+  }
+
+  &.needs_maintenance:hover {
+    @extend a.status.negative:hover;
+  }
+
+  &.inactive:hover {
+    @extend a.status.double-plus-ungood:hover;
+  }
+
+  &.needs_visit:hover {
+    color: $cw-yellow-hover;
+  }
+}

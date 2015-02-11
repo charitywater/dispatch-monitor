@@ -1,0 +1,14 @@
+%header.row
+  %h1.medium-12.columns Change your password
+
+%section.row{ role: 'main' }
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    .medium-12.columns= f.error_notification
+    .medium-12.columns= f.input :reset_password_token, as: :hidden
+    .medium-12.columns= f.full_error :reset_password_token
+
+    .medium-12.columns= f.input :password, label: "New password", required: true, autofocus: true
+    .medium-12.columns= f.input :password_confirmation, label: "Confirm your new password", required: true
+    .medium-12.columns= f.button :submit, "Change my password", class: 'button radius'
+
+    .medium-12.columns= link_to 'Login', new_account_session_path

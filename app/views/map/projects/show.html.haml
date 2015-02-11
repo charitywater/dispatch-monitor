@@ -1,0 +1,4 @@
+#map.full-height
+  .full-height{ data: { behavior: 'loadProjectMap', id: @map.selected_project.id, latitude: @map.selected_project.latitude, longitude: @map.selected_project.longitude } }
+
+  = render 'map/sidebar', map: @map

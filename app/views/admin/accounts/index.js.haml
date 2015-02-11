@@ -1,0 +1,2 @@
+$('#accounts').html('#{j render('accounts', accounts: @accounts)}');
+if (Modernizr.history) { history.pushState({}, '', '#{admin_accounts_path(@accounts.filter_form.to_query_params).html_safe}'); }

@@ -1,0 +1,35 @@
+%header.row.vertical-container
+  %h1.medium-12.columns
+    Sensors
+    = link_to '+ Sensors', new_sensor_path, class: 'button radius small button-add'
+  %p= render 'fake_data' unless Rails.env.production?
+
+  = render 'application/pagination/thin', items: sensors.items, filter_form: sensors.filter_form
+
+%section.row{ role: 'main' }
+  .medium-12.columns
+    %table
+      %thead
+        %tr
+          %th IMEI
+          %th Deployment Code
+          %th Community
+          %th Uptime (weeks)
+          %th Daily Average (liters)
+          %th Actions
+      %tbody
+        - sensors.items.each do |sensor|
+          %tr
+            %td= sensor.imei
+            %td= link_to sensor.deployment_code, map_project_path(sensor.project)
+            %td= sensor.community_name
+            %td= sensor.uptime
+            %td= number_with_delimiter sensor.daily_average
+            %td
+              = link_to sensor_path(sensor),
+                title: 'Delete Sensor',
+                method: :delete,
+                data: { confirm: "Are you sure you want to delete sensor #{sensor.imei}?" } do
+                %span.ss-icon.ss-standard Delete
+
+  = render 'application/pagination/wide', items: sensors.items, filter_form: sensors.filter_form

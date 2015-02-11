@@ -1,0 +1,10 @@
+.vertical-container {
+  position: relative;
+}
+
+.vertically-centered {
+  @include transform(translateY(-50%));
+
+  position: absolute;
+  top: 50%;
+}

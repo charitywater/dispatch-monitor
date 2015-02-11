@@ -1,0 +1,6 @@
+.page-content
+  %header.row
+    %h1.medium-12.columns Tickets
+
+  %section.row#tickets{ data: { behavior: 'rewire' }, role: 'main' }
+    = render 'tickets', tickets: @tickets

@@ -1,0 +1,36 @@
+Dear #{recipient.name},
+
+= precede "\n" do
+  Here is your weekly report from #{week_start} to #{week_end}:
+
+= precede "\n" do
+  **Summary**
+= precede "\n" do
+  #{pluralize(flowing_count, 'project was', 'projects were')} fixed
+= precede "\n" do
+  #{pluralize(maintenance_count, 'new project requires', 'new projects require')} maintenance
+= precede "\n" do
+  #{pluralize(visit_count, 'new project needs', 'new projects need')} a visit
+
+= precede "\n" do
+  **Details**
+- if flowing_codes.any?
+  = precede "\n    " do
+    Projects that were fixed:
+    - flowing_codes.each do |deployment_code|
+      = precede "        " do
+        = link_to deployment_code, project_url(Project.find_by(deployment_code: deployment_code))
+
+- if maintenance_codes.any?
+  = precede "\n    " do
+    New projects that require maintenance:
+    - maintenance_codes.each do |deployment_code|
+      = precede "        " do
+        = link_to deployment_code, project_url(Project.find_by(deployment_code: deployment_code))
+
+- if visit_codes.any?
+  = precede "\n    " do
+    New projects that need a visit:
+    - visit_codes.each do |deployment_code|
+      = precede "        " do
+        = link_to deployment_code, project_url(Project.find_by(deployment_code: deployment_code))

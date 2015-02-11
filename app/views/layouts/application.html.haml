@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+
+    %title Dispatch | charity: water
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'vendor/modernizr'
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'navigation'
+    %section#main-section
+      = render 'flash_messages'
+      = yield
+    %footer
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY']}&sensor=false".html_safe
+    = javascript_include_tag 'https://www.google.com/jsapi'
+    :javascript
+      google.load('visualization', '1', { packages:['corechart'] });
+    = javascript_include_tag 'application'

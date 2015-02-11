@@ -1,0 +1,17 @@
+= precede "\n" do
+  #{I18n.t survey_type, scope: [:application, :mailer, :survey_response]}
+  - [:created, :updated, :invalid].each do |status|
+    - if local_assigns[status].present?
+      = precede "    " do
+        #{pluralize(local_assigns[status].count, 'survey response was', 'survey responses were')} #{status.to_s}.
+
+  - if needs_visit_count > 0
+    = precede "\n    " do
+      #{pluralize(needs_visit_count, 'project needs', 'projects need')} to be visited
+
+  - if needs_maintenance_deployment_codes.any?
+    = precede "\n    " do
+      #{pluralize(needs_maintenance_deployment_codes.count, 'project needs', 'projects need')} maintenance:
+      - needs_maintenance_deployment_codes.each do |deployment_code|
+        = precede "        " do
+          = deployment_code

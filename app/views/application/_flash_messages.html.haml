@@ -1,0 +1,8 @@
+.row
+  .medium-12.columns
+    - [:success, :info, :warning, :alert, :secondary].each do |type|
+      - if flash[type].present?
+        .alert-box{ class: type, data: { alert: true } }
+          = flash[type]
+          = link_to '#', class: 'close' do
+            &times;

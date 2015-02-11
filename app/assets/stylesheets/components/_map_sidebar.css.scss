@@ -1,0 +1,29 @@
+#map {
+  position: relative;
+}
+
+.map-sidebar {
+  @extend .full-height;
+
+  padding: 2rem 2rem 2rem 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  background: rgba(0, 0, 0, .35);
+  width: rem-calc(520);
+
+  overflow: hidden;
+
+  /* To accomodate overflow-y scrolling on the map sidebar */
+  .column, .columns {
+    padding-right: 0;
+  }
+}
+
+.map-sidebar-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - 3rem);
+}

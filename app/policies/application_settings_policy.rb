@@ -1,0 +1,2 @@
+class ApplicationSettingsPolicy < AdminPolicy
+end

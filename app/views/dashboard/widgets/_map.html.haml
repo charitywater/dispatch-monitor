@@ -1,0 +1,12 @@
+.medium-8.columns
+  %section.dashboard-widget
+    %header.dashboard-widget-header
+      %h2.dashboard-widget-header-title
+        %span.dashboard-widget-header-value= number_with_delimiter(dashboard.total_project_count)
+        = 'Project'.pluralize(dashboard.total_project_count)
+    %section.dashboard-widget-content.dashboard-widget-content-no-padding
+      .full-height{ data: { behavior: 'loadDashboardMap', bounds: dashboard.bounds, id: 'nothing' } }
+    %footer.dashboard-widget-footer
+      = link_to map_path, class: 'dashboard-widget-footer-icon right' do
+        %span.ss-icon.ss-symbolicons-block Map
+      %span.dashboard-widget-footer-caption= dashboard.program_name

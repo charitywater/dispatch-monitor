@@ -1,0 +1,2 @@
+module WeeklyLogsHelper
+end

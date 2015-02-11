@@ -1,0 +1,18 @@
+%section.row{ role: 'main' }
+  .medium-12.columns
+    %table
+      %thead
+        %tr
+          %th IMEI
+          %th Deployment Code
+          %th Received At
+          %th GMT Time
+          %th Data
+      %tbody
+        - weekly_logs.items.each do |weekly|
+          %tr
+            %td= Sensor.find(weekly.sensor_id).imei
+            %td= link_to Sensor.find(weekly.sensor_id).deployment_code, map_project_path(Sensor.find(weekly.sensor_id).project)
+            %td= weekly.received_at
+            %td= weekly.formatted_gmt_time
+            %td= weekly.formatted_data

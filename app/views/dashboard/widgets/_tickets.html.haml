@@ -1,0 +1,27 @@
+.medium-4.columns
+  %section.dashboard-widget
+    %header.dashboard-widget-header
+      %h2.dashboard-widget-header-title
+        %span.dashboard-widget-header-value= dashboard.incomplete_ticket_count
+        = 'Ticket'.pluralize(dashboard.incomplete_ticket_count)
+        Due
+    %section.dashboard-widget-content.vertical-container
+      - overdue_params = { dashboard.filter_form.param_name => { status: :overdue, program_id: dashboard.filter_form.program_id } }
+      - overdue_classes = 'dashboard-ticket-status overdue small-6 columns vertically-centered'
+      = link_to tickets_path(overdue_params), class: overdue_classes do
+        .dashboard-ticket-status-icon.ss-deletecalendar.ss-standard
+        .dashboard-ticket-status-value= dashboard.overdue_ticket_count
+        .dashboard-ticket-status-label Overdue
+
+      - due_soon_params = { dashboard.filter_form.param_name => { status: :in_progress, program_id: dashboard.filter_form.program_id } }
+      - due_soon_classes = 'dashboard-ticket-status due-soon small-6 small-offset-6 columns vertically-centered'
+      = link_to tickets_path(due_soon_params), class: due_soon_classes do
+        .dashboard-ticket-status-icon.ss-calendar.ss-standard
+        .dashboard-ticket-status-value= dashboard.due_soon_ticket_count
+        .dashboard-ticket-status-label Due in 7d
+
+    %footer.dashboard-widget-footer
+      - tickets_params = { dashboard.filter_form.param_name => { program_id: dashboard.filter_form.program_id } }
+      = link_to tickets_path(tickets_params),
+        class: 'dashboard-widget-footer-icon right' do
+        %span.ss-icon.ss-symbolicons-block List

@@ -1,0 +1,23 @@
+table {
+  border-collapse: collapse;
+}
+
+th {
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  white-space: nowrap;
+}
+
+th .current {
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .asc {
+  background-image: image-url("table_icons/up_arrow.png");
+}
+
+th .desc {
+  background-image: image-url("table_icons/down_arrow.png");
+}

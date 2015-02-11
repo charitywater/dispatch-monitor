@@ -1,0 +1,51 @@
+.pagination {
+  color: $cw-blue;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+
+  a {
+    color: $cw-gray-30;
+  }
+
+  a:hover {
+    color: $cw-gray-30-hover;
+  }
+
+  .ss-icon {
+    font-size: 0.6rem;
+  }
+}
+
+.pagination-wide {
+  @extend .text-center;
+}
+
+.pagination-thin {
+  @extend .text-right;
+}
+
+.pagination-unit {
+  margin: auto 0.7rem;
+}
+
+.pagination-text {
+  .pagination-first & {
+    margin-left: 0.4rem;
+  }
+
+  .pagination-last & {
+    margin-right: -0.1rem;
+  }
+}
+
+.pagination-first, .pagination-last {
+  .pagination-thin & {
+    display: none;
+  }
+
+  .ss-icon {
+    letter-spacing: -0.4rem;
+  }
+}

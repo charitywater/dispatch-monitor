@@ -1,0 +1,64 @@
+.dashboard-field-visits {
+  @extend .vertical-container;
+  height: 50%;
+
+  opacity: .8;
+
+  color: $cw-gray-20;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5rem;
+
+  display: block;
+  padding: 0;
+  margin: 0 1rem;
+}
+
+.dashboard-field-visits-label {
+  @extend .vertically-centered;
+
+  font-weight: 300;
+  padding-left: 2rem;
+
+  &:before {
+    @include icon-outline($cw-yellow);
+    @extend .ss-icon;
+
+    position: absolute;
+    left: 0;
+    display: block;
+    font-size: 1.3rem;
+  }
+
+  .observation &:before {
+    @extend .ss-standard;
+    content: "eye";
+  }
+
+  .maintenance &:before {
+    @extend .ss-symbolicons-block;
+    content: "wrench";
+  }
+}
+
+.dashboard-field-visits-value {
+  @extend .vertically-centered;
+
+  font-weight: 500;
+  right: 0;
+}
+
+.dashboard-days {
+  width: 4rem;
+  display: inline-block;
+}
+
+.dashboard-field-visits-input {
+  &, &[type=number] {   /* FOUNDATION!!!! */
+    display: inline-block;
+    height: 1.75rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+  }
+}

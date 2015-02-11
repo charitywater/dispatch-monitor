@@ -1,0 +1,21 @@
+%li{ class: active_class(map_path) }
+  = link_to 'Map', map_path, class: 'top-bar-link'
+%li{ class: active_class(projects_path) }
+  = link_to 'Projects', projects_path, class: 'top-bar-link'
+%li{ class: active_class(tickets_path) }
+  = link_to 'Tickets', tickets_path, class: 'top-bar-link'
+%li{ class: active_class(vehicles_path) }
+  = link_to 'Vehicles', vehicles_path, class: 'top-bar-link'
+%li{ class: active_class(sensors_path) }
+  = link_to 'Sensors', sensors_path, class: 'top-bar-link'
+%li.has-dropdown{ class: admin_active_class }
+  = link_to 'Admin', '#', class: 'top-bar-link'
+  %ul.dropdown
+    %li
+      = link_to 'Accounts', admin_accounts_path, class: 'top-bar-link'
+    %li
+      = link_to 'Notifications', admin_email_subscriptions_path, class: 'top-bar-link'
+    %li
+      = link_to 'DISPATCH Options', edit_admin_application_settings_path, class: 'top-bar-link'
+%li{ class: active_class(edit_settings_path) }
+  = link_to 'Settings', edit_settings_path, class: 'top-bar-link'

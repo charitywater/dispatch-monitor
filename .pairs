@@ -1,0 +1,11 @@
+pairs:
+  eg: Edgar Gonzalez; edgar
+  mk: Mike Kenyon; mkenyon
+  ts: Taavo Smith; taavo
+  dm: David Morhovich; dmorhovich
+
+email:
+  prefix: pair
+  domain: pivotallabs.com
+
+global: true

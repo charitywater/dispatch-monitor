@@ -1,0 +1,2 @@
+$('#sensors').html('#{j render('sensors', sensors: @sensors)}');
+if (Modernizr.history) { history.pushState({}, '', '#{sensors_path(@sensors.filter_form.to_query_params).html_safe}'); }
